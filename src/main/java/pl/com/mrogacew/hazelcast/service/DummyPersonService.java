@@ -9,9 +9,10 @@ public class DummyPersonService implements PersonService {
     @Override
     public Person get(Long id) {
         return Person.builder()
-                        .id(id)
+                        .personId(id)
                         .firstName("John")
                         .lastName("Doe")
+//                        .age(20)
                         .build();
     }
 
