@@ -19,7 +19,7 @@ public class PersonController {
     }
 
     @GetMapping("/person/{id}")
-    public Person getPerson(@PathVariable("id") long id) {
+    public Person getPerson(@PathVariable("id") Long id) {
 
         return personService.get(id);
     }

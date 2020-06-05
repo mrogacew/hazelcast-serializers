@@ -20,5 +20,4 @@ public class HazelcastDemoApplication {
     public CacheManager cacheManager(HazelcastInstance hz) {
         return new HazelcastCacheManager(hz);
     }
-
 }

@@ -1,5 +1,6 @@
 package pl.com.mrogacew.hazelcast.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
@@ -14,6 +15,7 @@ public class CachedPersonService implements PersonService {
 
     private final PersonService personService;
 
+    @Autowired
     public CachedPersonService(@Qualifier("dummy") PersonService personService) {
         this.personService = personService;
     }
@@ -23,5 +25,4 @@ public class CachedPersonService implements PersonService {
     public Person get(Long id) {
         return personService.get(id);
     }
-
 }
