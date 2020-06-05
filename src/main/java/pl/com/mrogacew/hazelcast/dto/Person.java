@@ -1,9 +1,9 @@
 package pl.com.mrogacew.hazelcast.dto;
 
 import java.io.IOException;
-import com.hazelcast.nio.serialization.Portable;
 import com.hazelcast.nio.serialization.PortableReader;
 import com.hazelcast.nio.serialization.PortableWriter;
+import com.hazelcast.nio.serialization.VersionedPortable;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,9 +13,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Person implements Portable {
+public class Person implements VersionedPortable {
 
-    final static int ID = 1;
+    public final static int ID = 1;
+    public final static int CLASS_VERSION = 2;
 
     private Long personId;
     private String firstName;
@@ -46,5 +47,10 @@ public class Person implements Portable {
         this.firstName = reader.readUTF("firstName");
         this.lastName = reader.readUTF("lastName");
 //        this.age = reader.readInt("age");
+    }
+
+    @Override
+    public int getClassVersion() {
+        return CLASS_VERSION;
     }
 }
